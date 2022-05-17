@@ -9,14 +9,58 @@ Original file is located at
 
 import random 
 secenekler=["Taş","Kağıt","Makas"]
-kullanıcı_pc= random.choice(secenekler)
-kullanıcı_hmn=input("Aşağıdaki verilerden birini giriniz.(Sistem büyük-küçük harflere ve duyarlıdır.)\n Taş-Kağıt-Makas")
+"""
+kullanıcı_pc= random.choice(secenekler)                                                                                   # Bu 2 satırı 'while' içine yazarsak her
+kullanıcı_hmn=input("Aşağıdaki verilerden birini giriniz.(Sistem büyük-küçük harflere ve duyarlıdır.)\n Taş-Kağıt-Makas") # oyun başında tekrar edecektir.
+"""
 tur=0
 human=0
 pc=0
 while True:
-
-  if kullanıcı_pc== "Taş" and kullanıcı_hmn== "Kağıt":
+    player = input("Taş - Kağıt - Makas\nSeç: ") # Oyun başladığında ilk oyuncudan input alınacak
+    computer = random.choice(secenekler)         # Sonra random modülü dönücek
+    
+    if player == "Taş": # Eğer oyuncu taş seçmediyse altı okumadan geçicek ve 35. satıra atlıyacak (kod daha hızlı çalışmış olur VE stabil)
+        if computer == "Kağıt":
+            print("Turu bilgisayar kazandı")
+            tur += 1
+            pc += 1
+        if computer =="Makas":
+            print("Turu siz kazandınız")
+            tur += 1
+            human += 1
+        else:
+            print("Berabere kaldınız")
+            
+    if player == "Kağıt":
+        if computer =="Makas":
+            print("Turu bilgisayar kazandı")
+            tur += 1
+            pc += 1
+        if computer == "Taş":
+            print("Turu siz kazandınız")
+            tur += 1
+            pc += 1
+        else:
+            print("Berabere kaldınız")
+            
+    if player == "Makas":
+        if computer == "Kağıt":
+            print("Turu siz kazandınız")
+            tur += 1
+            pc += 1
+        if computer == "Taş":
+            print("Turu bilgisayar kazandı")
+            tur += 1
+            pc += 1
+        else:
+            print("berabere kaldınız")
+            
+  else:
+    print("yanlış veri girdiniz")
+    
+"""
+  if kullanıcı_pc== "Taş" and kullanıcı_hmn== "Kağıt": # Türkçe karakterler bazen sorun yaratabilir. (kullanıcı yerine kullanici veya user veya player kullanılabilir)
     print("Turu siz kazandınız!")
     tur=tur+1
     human=human+1
@@ -45,7 +89,8 @@ while True:
     tur=tur+0 
   else:
    print("Yanlış veri girdiniz")
-  
+"""
+
   if pc==2 or pc==3:
     print("Oyunu Kaybettiniz!")
   elif human==2 or human==3:
@@ -55,6 +100,7 @@ while True:
     print("Oyun sonlandı!")
     break
   
+"""
   kullanıcı_pc=random.choice(secenekler)
   kullanıcı_hmn= input("Yeni bir veri giriniz")
-
+"""
